@@ -11,7 +11,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookDto {
-    private Long id;
     private String isbn;
     private String title;
     private String author;
