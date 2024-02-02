@@ -25,7 +25,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void addBook(BookDto bookDto) {
         Book book=mapper.map(bookDto, Book.class);
-        System.out.println(book);
+
         bookRepository.save(book);
     }
 
@@ -39,5 +39,20 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book getById(Long id) {
         return bookRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public boolean deleteById(Long id) {
+        if(bookRepository.existsById(id)){
+            bookRepository.deleteById(id);
+            return true;
+        }
+        return  false;
+    }
+
+    @Override
+    public boolean upDateBook(Book book) {
+        bookRepository.save(book);
+        return  true;
     }
 }
